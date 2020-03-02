@@ -32,6 +32,35 @@ namespace StudVidurkiaiVGTU
                 ReadInputFromConsole();
             }
         }
+        public static void ReadInputFromFile()
+        {
+            string line;
+            int counter = 0;
+            string filePath = System.IO.Path.GetFullPath("studentai.txt");
+            System.IO.StreamReader file = new System.IO.StreamReader(filePath);
+            while ((line = file.ReadLine()) != null)
+            {
+                if (counter > 0)
+                {
+                    Studentas studentas = new Studentas();
+
+                    string duomenys = line;
+                    var splitData = duomenys.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                    studentas.Vardas = splitData[0];
+                    studentas.Pavarde = splitData[1];
+                    for (int i = 2; i < splitData.Length - 1; i++)
+                    {
+                        studentas.NamuDarbai.Add(double.Parse(splitData[i]));
+                    }
+                    studentas.Egzaminas = double.Parse(splitData[splitData.Length - 1]);
+                    Program.studentai.Add(studentas);
+                }
+                counter++;
+            }
+            file.Close();
+            System.Console.WriteLine("There were {0} students.", counter-1);
+        }
         public static void ReadRandomInput()
         {
             Studentas studentas = new Studentas();
@@ -60,36 +89,6 @@ namespace StudVidurkiaiVGTU
             const string abc = "abcdefghijklmnopqrstuvwxyz";
             return new string(Enumerable.Repeat(abc, ilgis)
               .Select(s => s[random.Next(s.Length)]).ToArray());
-        }
-
-        public static void ReadInputFromConsoleArray()
-        {
-            int studentoNr = Program.studentaiArray.GetArraySize();
-
-            Console.WriteLine("Įveskite studento duomenis:  ");
-            string duomenys = Console.ReadLine();
-            var splitData   = duomenys.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-            Program.studentaiArray.vardas[studentoNr] = splitData[0];
-            Program.studentaiArray.pavarde[studentoNr] = splitData[1];
-
-            for (int i = 2; i < splitData.Length - 1; i++)
-            {
-                Program.studentaiArray.NamuDarbai[studentoNr,i-2] = double.Parse(splitData[i]);
-            }
-
-            Program.studentaiArray.egzaminas[studentoNr] = double.Parse(splitData[splitData.Length - 1]);
-            Program.studentaiArray.SkaiciuotiVidurki(studentoNr);
-            Program.studentaiArray.SkaiciuotiMediana(studentoNr);
-            Program.studentaiArray.dydis += 1;
-
-            Console.WriteLine("Ar norite dar viena studenta prideti? [Y/N]:  ");
-
-            String answer = Console.ReadLine();
-            if (answer.Equals("Y") || answer.Equals("y"))
-            {
-                ReadInputFromConsoleArray();
-            }
         }
     }
 }
