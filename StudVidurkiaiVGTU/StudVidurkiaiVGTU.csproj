@@ -6,4 +6,10 @@
     <AssemblyName>StudVidurkiaiVGTU</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Update="studentai.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
