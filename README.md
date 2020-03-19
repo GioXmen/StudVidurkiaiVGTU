@@ -1,4 +1,7 @@
-# StudVidurkiaiVGTU - Integruotos programavimo aplinkos laboratorinis darbas v0.1
+# StudVidurkiaiVGTU
+## Integruotos programavimo aplinkos laboratorinis darbas v0.1
+
+
 ## Užduotis
 > Parašykite programą, kuri nuskaito šiuos studentų duomenis:
 
