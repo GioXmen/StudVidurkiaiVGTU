@@ -6,6 +6,9 @@ namespace StudVidurkiaiVGTU
     static class StudentData
     {
         private static readonly Random random = new Random();
+        private static String formatExceptionMessage = "Duomenys įvesti neteisingu formatu arba panaudoti simboliai vietoj raidžių. Neteisingai įvestos reikšmės paversti Į nulius";
+        private static String fileNotFoundExceptionMessage = "Ivesties failas nerastas";
+        private static double defaultValue = 0.00;
 
         public static void ReadInputFromConsole()
         {
@@ -30,18 +33,42 @@ namespace StudVidurkiaiVGTU
         {
             Studentas studentas = new Studentas();
             String[] splitData;
-
-            splitData = duomenys.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            try
+            {
+                splitData = duomenys.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                if(splitData.Length < 2) { throw new FormatException("Not enough array elements"); }
+            }
+            catch (FormatException ex)
+            {
+                //Console.WriteLine("Netinkamai įvesti studentų duomenys!");
+                return;
+            }
 
             studentas.Vardas = splitData[0];
             studentas.Pavarde = splitData[1];
             for (int i = 2; i < 7; i++)
             {
-
-             studentas.NamuDarbai.Add(double.Parse(splitData[i]));
-
+                try
+                {
+                    studentas.NamuDarbai.Add(double.Parse(splitData[i]));
+                }
+                catch (Exception ex)
+                {
+                    //Console.WriteLine(formatExceptionMessage + "\n" + ex); //Atkomentuoti norint pamatyti exception message
+                    studentas.NamuDarbai.Add(defaultValue);
+                }
             }
-            studentas.Egzaminas = double.Parse(splitData[7]);
+
+            try
+            {
+                studentas.Egzaminas = double.Parse(splitData[7]);
+            }
+            catch (FormatException ex)
+            {
+                //Console.WriteLine(formatExceptionMessage + "\n" + ex);
+                studentas.Egzaminas = defaultValue;
+            }
+
             Program.studentai.Add(studentas);
         }
 
@@ -49,8 +76,18 @@ namespace StudVidurkiaiVGTU
         {
             string line;
             int counter = 0;
-            string filePath = System.IO.Path.GetFullPath("studentai.txt");
-            System.IO.StreamReader file = new System.IO.StreamReader(filePath);
+            System.IO.StreamReader file = null;
+            try {
+                string filePath = System.IO.Path.GetFullPath("studentai.txt");
+                file = new System.IO.StreamReader(filePath);
+            } catch (System.IO.IOException ex)
+            {
+                Console.WriteLine(fileNotFoundExceptionMessage + "\n---------------------------------------------------\n" + ex);
+                Console.WriteLine("Buvo prideta {0} studentų. Įvesties failas nerastas", 0);
+                Console.WriteLine("---------------------------------------------------");
+                return;
+
+            }
             while ((line = file.ReadLine()) != null)
             {
                 if (counter > 0)

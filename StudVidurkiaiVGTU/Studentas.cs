@@ -19,13 +19,18 @@ namespace StudVidurkiaiVGTU
         public string GetVidurkis()
         {
             double suma = 0;
+            double namuVid = 0;
             int size = 0;
             foreach (var pazymys in NamuDarbai)
             {
                 suma += (int)pazymys;
                 size += 1;
             }
-            double namuVid = suma / size;
+            if(suma == 0 || size == 0)
+            {
+                namuVid = 0;
+            }
+            else  namuVid = suma / size;
             double galutinis = 0.3 * namuVid + 0.7 * Egzaminas;
             SetVidurkis(galutinis.ToString("F2"));
             return Vidurkis;      
@@ -51,8 +56,15 @@ namespace StudVidurkiaiVGTU
 
         private static double SkaiciuotiMediana(double[] skaičiai)
         {
-            if (skaičiai == null || skaičiai.Length == 0)
-                throw new Exception("Reikalinga bent viena reikšmė medianai skaičiuoti");
+            try
+            {
+                if (skaičiai == null || skaičiai.Length < 5)
+                    throw new Exception("Reikalinga bent viena reikšmė medianai skaičiuoti");
+            }
+            catch (Exception)
+            {
+                return 0.00;
+            }
 
             //Rušiuoti sąraša ir naudoti naują masyvą
             double[] rušiuotiSkaičiai = (double[])skaičiai.Clone();
