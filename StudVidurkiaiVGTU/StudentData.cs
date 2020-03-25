@@ -3,26 +3,19 @@ using System.Linq;
 
 namespace StudVidurkiaiVGTU
 {
-    class StudentData
+    static class StudentData
     {
         private static readonly Random random = new Random();
 
         public static void ReadInputFromConsole()
         {
-            Studentas studentas = new Studentas();
+            Console.WriteLine("Įveskite studento duomenis šitu formatu:    ");
+            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine("Vardas Pavardė ND1 ND2 ND3 ND4 ND5 Egzaminas");
+            Console.WriteLine("--------------------------------------------");
 
-            Console.WriteLine("Įveskite studento duomenis:  ");
             string duomenys = Console.ReadLine();
-            var splitData   = duomenys.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-            studentas.Vardas  = splitData[0];
-            studentas.Pavarde = splitData[1];
-            for (int i = 2; i < splitData.Length - 1; i++)
-            {
-                studentas.NamuDarbai.Add(double.Parse(splitData[i]));
-            }
-            studentas.Egzaminas = double.Parse(splitData[splitData.Length - 1]);
-            Program.studentai.Add(studentas);
+            ParseStudent(duomenys);
 
             Console.WriteLine("Ar norite dar viena studenta prideti? [Y/N]:  ");
 
@@ -32,6 +25,26 @@ namespace StudVidurkiaiVGTU
                 ReadInputFromConsole();
             }
         }
+
+        private static void ParseStudent(String duomenys)
+        {
+            Studentas studentas = new Studentas();
+            String[] splitData;
+
+            splitData = duomenys.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+            studentas.Vardas = splitData[0];
+            studentas.Pavarde = splitData[1];
+            for (int i = 2; i < 7; i++)
+            {
+
+             studentas.NamuDarbai.Add(double.Parse(splitData[i]));
+
+            }
+            studentas.Egzaminas = double.Parse(splitData[7]);
+            Program.studentai.Add(studentas);
+        }
+
         public static void ReadInputFromFile()
         {
             string line;
@@ -42,25 +55,14 @@ namespace StudVidurkiaiVGTU
             {
                 if (counter > 0)
                 {
-                    Studentas studentas = new Studentas();
-
-                    string duomenys = line;
-                    var splitData = duomenys.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-                    studentas.Vardas = splitData[0];
-                    studentas.Pavarde = splitData[1];
-                    for (int i = 2; i < splitData.Length - 1; i++)
-                    {
-                        studentas.NamuDarbai.Add(double.Parse(splitData[i]));
-                    }
-                    studentas.Egzaminas = double.Parse(splitData[splitData.Length - 1]);
-                    Program.studentai.Add(studentas);
+                    ParseStudent(line);
                 }
                 counter++;
             }
             file.Close();
-            System.Console.WriteLine("There were {0} students.", counter-1);
+            System.Console.WriteLine("Buvo prideta {0} studentų.", counter-1);
         }
+
         public static void ReadRandomInput()
         {
             Studentas studentas = new Studentas();

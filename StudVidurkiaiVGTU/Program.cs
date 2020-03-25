@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace StudVidurkiaiVGTU
 {
-    class Program
+    static class Program
     {
         public static List<Studentas> studentai = new List<Studentas>();
         static void Main(string[] args)
@@ -13,20 +12,18 @@ namespace StudVidurkiaiVGTU
         }
     }
 
-    internal class Menu
+    internal static class Menu
     {
         public static void ShowMenu()
         {
             Console.WriteLine("Studentų pažymiai v0.2 - Ernestas Lobačevskis");
             Console.WriteLine("--------------------------------------------");
             Console.WriteLine("--------------------------------------------");
-            Console.WriteLine("cl      - Console įvedimas su list");
-            Console.WriteLine("cm      - Console įvedimas su masyvais");
+            Console.WriteLine("cl      - Console įvedimas");
             Console.WriteLine("txt     - Įvestis iš teksto failo");
             Console.WriteLine("rnd     - Įvestis sugeneruota");
-            Console.WriteLine("printv  - Spausdint vidurkius");
-            Console.WriteLine("printm  - Spausdint mediana");
-            Console.WriteLine("print   - Spausdint studentus");
+            Console.WriteLine("printr  - Spausdint rezultatus, rušiuoti pagal vardus");
+            Console.WriteLine("print   - Spausdint studentus [raw data]");
             Console.WriteLine("end     - Baigti programa");
             Console.WriteLine("clear   - Valyti išvedimą");
             Console.WriteLine("--------------------------------------------");
@@ -48,11 +45,8 @@ namespace StudVidurkiaiVGTU
                     case "rnd":
                         StudentData.ReadRandomInput();
                         break;
-                    case "printv":
-                        PrintStudentsVidurkiai();
-                        break;
-                    case "printm":
-                        PrintStudentsMediana();
+                    case "printr":
+                        PrintStudentsRezultatai();
                         break;
                     case "print":
                         PrintStudents();
@@ -69,27 +63,16 @@ namespace StudVidurkiaiVGTU
                 }
             }
         }
-        public static void PrintStudentsVidurkiai()
+        public static void PrintStudentsRezultatai()
         {
-            Console.WriteLine("{0, 5} {1, 15} {2, 25}", "Vardas", "Pavardė", "Galutinis (Vid.)");
-            Console.WriteLine("--------------------------------------------");
-            var newList = Program.studentai.OrderBy(value => value.Vardas).ToList();
-            foreach (var studentas in newList)
+            Console.WriteLine("{0, 5} {1, 16} {2, 25} {3, 31}", "Vardas", "Pavardė", "Galutinis (Vid.)", "Galutinis(Med.)");
+            Console.WriteLine("----------------------------------------------------------------------------------------");
+            //var newList = Program.studentai.OrderBy(value => value.Vardas).ToList();
+            foreach (var studentas in Program.studentai)
             {
-                Console.WriteLine("{0, 5} {1, 15} {2, 25}", studentas.Vardas, studentas.Pavarde, studentas.GetVidurkis());
+                Console.WriteLine("{0, 5} {1, 18} {2, 20} {3, 30}", studentas.Vardas, studentas.Pavarde, studentas.GetVidurkis(), studentas.GetMediana());
             }
-            Console.WriteLine("--------------------------------------------");
-        }
-        public static void PrintStudentsMediana()
-        {
-            Console.WriteLine("{0, 5} {1, 15} {2, 25}", "Vardas", "Pavardė", "Galutinis (Med.)");
-            Console.WriteLine("--------------------------------------------");
-            var newList = Program.studentai.OrderBy(value => value.Vardas).ToList();
-            foreach (var studentas in newList)
-            {
-                Console.WriteLine("{0, 5} {1, 15} {2, 25}", studentas.Vardas, studentas.Pavarde, studentas.GetMediana());
-            }
-            Console.WriteLine("--------------------------------------------");
+            Console.WriteLine("----------------------------------------------------------------------------------------");
         }
 
         public static void PrintStudents()
@@ -98,8 +81,7 @@ namespace StudVidurkiaiVGTU
             {
                 Console.WriteLine("-------------------------------------------------------------------------");
                 Console.WriteLine("Vardas: " + studentas.Vardas + "\n" + "Pavarde: " + studentas.Pavarde + "\n" +
-                    "NamuDarbai:" + string.Join("\t", studentas.NamuDarbai) + "\n" + "Egzaminas: " + studentas.Egzaminas + "\n" + 
-                    "Vidurkis: " + studentas.GetVidurkis() + "\n" + "Mediana: " + studentas.GetMediana());
+                    "NamuDarbai:" + string.Join("\t", studentas.NamuDarbai) + "\n" + "Egzaminas: " + studentas.Egzaminas);
                 Console.WriteLine("-------------------------------------------------------------------------");
             }
         }
