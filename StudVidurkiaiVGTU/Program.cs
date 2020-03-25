@@ -17,7 +17,7 @@ namespace StudVidurkiaiVGTU
     {
         public static void ShowMenu()
         {
-            Console.WriteLine("Studentų pažymiai v0.2 - Ernestas Lobačevskis");
+            Console.WriteLine("Studentų pažymiai v0.3 - Ernestas Lobačevskis");
             Console.WriteLine("--------------------------------------------");
             Console.WriteLine("--------------------------------------------");
             Console.WriteLine("cl      - Console įvedimas");
