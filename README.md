@@ -1,5 +1,5 @@
 # StudVidurkiaiVGTU
-## Integruotos programavimo aplinkos laboratorinis darbas v0.1
+## Integruotos programavimo aplinkos laboratorinis darbas v0.2
 
 
 ## Užduotis
