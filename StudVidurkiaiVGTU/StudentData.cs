@@ -63,7 +63,7 @@ namespace StudVidurkiaiVGTU
             {
                 studentas.Egzaminas = double.Parse(splitData[7]);
             }
-            catch (FormatException ex)
+            catch (Exception ex)
             {
                 //Console.WriteLine(formatExceptionMessage + "\n" + ex);
                 studentas.Egzaminas = defaultValue;
