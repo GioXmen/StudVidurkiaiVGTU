@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace StudVidurkiaiVGTU
 {
@@ -67,8 +68,8 @@ namespace StudVidurkiaiVGTU
         {
             Console.WriteLine("{0, 5} {1, 16} {2, 25} {3, 31}", "Vardas", "Pavardė", "Galutinis (Vid.)", "Galutinis(Med.)");
             Console.WriteLine("----------------------------------------------------------------------------------------");
-            //var newList = Program.studentai.OrderBy(value => value.Vardas).ToList();
-            foreach (var studentas in Program.studentai)
+            var newList = Program.studentai.OrderBy(value => value.Vardas).ToList();
+            foreach (var studentas in newList)
             {
                 Console.WriteLine("{0, 5} {1, 18} {2, 20} {3, 30}", studentas.Vardas, studentas.Pavarde, studentas.GetVidurkis(), studentas.GetMediana());
             }
