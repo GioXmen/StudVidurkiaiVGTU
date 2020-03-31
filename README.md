@@ -1,7 +1,7 @@
 # StudVidurkiaiVGTU
 ## Integruotos programavimo aplinkos laboratorinis darbas v0.4
 
-##Laiko analizė
+## Laiko analizė
 ## X Studentu generavimas ir išvedimas į vieną failą
 | Studentu skaicius | Uzduotis | Laiko trukme |
 | ------ | ------ |  ------ | 
@@ -58,7 +58,7 @@
 | 10000000 | Pilna trukme (total time taken) | 57168ms |
 
 
-#Dokumentacija
+# Dokumentacija
 ## Objektai / Masyvai
 | objektas / masyvas | classpath |
 | ------ | ------ | 
