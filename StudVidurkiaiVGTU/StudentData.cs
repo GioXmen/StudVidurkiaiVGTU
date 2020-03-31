@@ -100,13 +100,15 @@ namespace StudVidurkiaiVGTU
             System.Console.WriteLine("Buvo prideta {0} studentų.", counter-1);
         }
 
-        public static void ReadRandomInput()
+        public static void ReadRandomInput(int studentuKiekis)
         {
+            int index = 1;
+            while(index < studentuKiekis){ 
             Studentas studentas = new Studentas();
             Random rnd = new Random();
 
-            studentas.Vardas  = GeneruotiVarda(9);
-            studentas.Pavarde = GeneruotiVarda(12);
+            studentas.Vardas  = "Vardas" + index;
+            studentas.Pavarde = "Pavarde" + index;
             for (int i = 0; i < 6; i++)
             {
                 studentas.NamuDarbai.Add(rnd.Next(0, 10));
@@ -114,20 +116,9 @@ namespace StudVidurkiaiVGTU
             studentas.Egzaminas = rnd.Next(0, 10);
             Program.studentai.Add(studentas);
 
-            Console.WriteLine(studentas.ToString());
-            Console.WriteLine("Ar norite dar viena studenta sugeneruoti? [Y/N]:  ");
-
-            String answer = Console.ReadLine();
-            if (answer.Equals("Y") || answer.Equals("y"))
-            {
-                ReadRandomInput();
+                index += 1;
             }
         }
-        private static string GeneruotiVarda(int ilgis)
-        {
-            const string abc = "abcdefghijklmnopqrstuvwxyz";
-            return new string(Enumerable.Repeat(abc, ilgis)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
-        }
+
     }
 }
