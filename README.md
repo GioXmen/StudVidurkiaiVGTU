@@ -1,20 +1,70 @@
 # StudVidurkiaiVGTU
-## Integruotos programavimo aplinkos laboratorinis darbas v0.3
+## Integruotos programavimo aplinkos laboratorinis darbas v0.4
+
+## Laiko analizė
+## X Studentu generavimas ir išvedimas/skaitymas į vieną failą
+| Studentu skaicius | Uzduotis | Laiko trukme |
+| ------ | ------ |  ------ | 
+| 100 | Generuoti | 1ms (0.001s)|
+| 100 | Isvesti į failą | 4ms (0.004s) |
+| 100 | Skaityti failą | 1ms (0.001s) |
+| ------ | ------ |  ------ | 
+| 1000 | Generuoti | 3ms (0.003s)|
+| 1000 | Isvesti į failą | 4ms (0.004s)|
+| 1000 | Skaityti failą | 2ms (0.002s)|
+| ------ | ------ |  ------ | 
+| 10 000 | Generuoti | 24ms (0.024s)|
+| 10 000 | Isvesti į failą | 9ms (0.009s)|
+| 10 000 | Skaityti failą | 9ms (0.009s)|
+| ------ | ------ |  ------ | 
+| 100 000 | Generuoti | 271ms (0.271s)|
+| 100 000 | Isvesti į failą | 64ms (0.064s)|
+| 100 000 | Skaityti failą | 62ms (0.062s)|
+| ------ | ------ |  ------ | 
+| 1000 000 | Generuoti | 2884ms (2.884s)|
+| 1000 000 | Isvesti į failą | 867ms (0.867s)|
+| 1000 000 | Skaityti failą | 490ms (0.490s)|
+| ------ | ------ |  ------ | 
+| 1000 000 0 | Generuoti | 33695ms (33.695s)|
+| 1000 000 0 | Isvesti į failą | 9079ms (9.079s)|
+| 1000 000 0 | Skaityti failą | 3737ms (3.737s)|
 
 
-## Užduotis
-> Parašykite programą, kuri nuskaito šiuos studentų duomenis:
+## X Studentu generavimas, rušiavimas į dvi grupes ir išvedimas į du failus
+| Studentu skaicius | Uzduotis | Laiko trukme |
+| ------ | ------ |  ------ | 
+| 100 | Generuoti | 1ms  (0.001s)|
+| 100 | Rušiuoti | 1ms  (0.001s)|
+| 100 | Isvesti į du failus | 4ms  (0.004s)|
+| 100 | Pilna trukme (total time taken) | 8ms  (0.008s)|
+| ------ | ------ |  ------ | 
+| 1000 | Generuoti | 3ms  (0.002s)|
+| 1000 | Rušiuoti | 2ms  (0.002s)|
+| 1000 | Isvesti į du failus | 5ms  (0.005s)|
+| 1000 | Pilna trukme (total time taken) | 11ms  (0.011s)|
+| ------ | ------ |  ------ | 
+| 10 000 | Generuoti | 25ms  (0.025s)|
+| 10 000 | Rušiuoti | 8ms  (0.008s)|
+| 10 000 | Isvesti į du failus | 11ms  (0.011s)|
+| 10 000 | Pilna trukme (total time taken) | 45ms  (0.045s)|
+| ------ | ------ |  ------ | 
+| 100 000 | Generuoti | 272ms  (0.272s)|
+| 100 000 | Rušiuoti | 61ms  (0.061s)|
+| 100 000 | Isvesti į du failus | 104ms  (0.104s)|
+| 100 000 | Pilna trukme (total time taken) | 439ms  (0.439s)|
+| ------ | ------ |  ------ | 
+| 1000 000 | Generuoti | 2993ms  (2.993s)|
+| 1000 000 | Rušiuoti | 836ms  (0.836s)|
+| 1000 000 | Isvesti į du failus | 1021ms  (1.021s)|
+| 1000 000 | Pilna trukme (total time taken) | 4852ms  (4.852s)|
+| ------ | ------ |  ------ | 
+| 100 0000 0 | Generuoti | 34574ms  (34.574s)|
+| 100 0000 0 | Rušiuoti | 10601ms  (10.601s)|
+| 100 0000 0 | Isvesti į du failus | 11985ms  (11.985s)|
+| 100 0000 0 | Pilna trukme (total time taken) | 57168ms  (57.168s)|
 
->> **`vardą`** ir **`pavardę`**
->
->> **`n`** atliktų namų darbų (nd) rezultatus (10-balėje sistemoje), 
->
->> Taip pat egzamino (egz) rezultatą.
-Tuomet iš šių duomenų, suskaičiuoja galutinį balą (galutinis):
->> #####  Galutinis = 0.3 * Vidurkis + 0.7 * Egzaminas
 
-
-
+# Dokumentacija
 ## Objektai / Masyvai
 | objektas / masyvas | classpath |
 | ------ | ------ | 
@@ -68,6 +118,26 @@ public static void ShowMenu()
 ```
 **Spausdina studentus**
 
+#### GeneruotiXStudentuIFaila()
+```csharp
+ private static void GeneruotiXStudentuIFaila(int kiekis)
+```
+**Sugeneruoja x studentu ir isveda i faila**
+Parametrai:
+| įvestis | apibrėžimas |
+| ------ | ------ |
+| kiekis | norimas studentu kiekis |
+
+#### RusiuotiXStudentu()
+```csharp
+ private static void RusiuotiXStudentu(int kiekis)
+```
+**Sugeneruoja ir surusiuoja x studentu  i du sarasus ir isveda i du failus**
+Parametrai:
+| įvestis | apibrėžimas |
+| ------ | ------ |
+| kiekis | norimas studentu kiekis |
+
 #### **`Klasė - StudentData`**
 
 #### ReadInputFromConsole()
@@ -88,16 +158,6 @@ public static void ReadInputFromConsole()
  public static void ReadInputFromFile()
 ```
 **Ivesti gauna is failo ir talpina į public Listą esantį klasėje "Program"**
-
-#### GeneruotiVarda()
-```csharp
- private static string GeneruotiVarda(int ilgis)
-```
-**Sugeneruoja atsitiktinį vardą ir gražiną jį**
-Parametrai:
-| įvestis | apibrėžimas |
-| ------ | ------ |
-| ilgis | norimas vardo ilgis |
 
 #### **`Klasė - Studentas`**
 
