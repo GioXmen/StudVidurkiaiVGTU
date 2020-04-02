@@ -5,57 +5,57 @@
 ## X Studentu generavimas ir išvedimas į vieną failą
 | Studentu skaicius | Uzduotis | Laiko trukme |
 | ------ | ------ |  ------ | 
-| 100 | Generuoti | 1ms |
-| 100 | Isvesti į failą | 4ms |
-| ------ | ------ |  ------ | 
-| 1000 | Generuoti | 3ms |
+| 1000 | Generuoti | 1ms |
 | 1000 | Isvesti į failą | 4ms |
 | ------ | ------ |  ------ | 
-| 10000 | Generuoti | 24ms |
-| 10000 | Isvesti į failą | 9ms |
+| 10000 | Generuoti | 3ms |
+| 10000 | Isvesti į failą | 4ms |
 | ------ | ------ |  ------ | 
-| 100000 | Generuoti | 271ms |
-| 100000 | Isvesti į failą | 64ms |
+| 100000 | Generuoti | 24ms |
+| 100000 | Isvesti į failą | 9ms |
 | ------ | ------ |  ------ | 
-| 1000000 | Generuoti | 2884ms |
-| 1000000 | Isvesti į failą | 867ms |
+| 1000000 | Generuoti | 271ms |
+| 1000000 | Isvesti į failą | 64ms |
 | ------ | ------ |  ------ | 
-| 1000000 | Generuoti | 33695ms |
-| 1000000 | Isvesti į failą | 9079ms |
+| 10000000 | Generuoti | 2884ms |
+| 10000000 | Isvesti į failą | 867ms |
+| ------ | ------ |  ------ | 
+| 10000000 | Generuoti | 33695ms |
+| 10000000 | Isvesti į failą | 9079ms |
 
 
 ## X Studentu generavimas, rušiavimas į dvi grupes ir išvedimas į du failus
 | Studentu skaicius | Uzduotis | Laiko trukme |
 | ------ | ------ |  ------ | 
-| 100 | Generuoti | 1ms |
-| 100 | Rušiuoti | 1ms |
-| 100 | Isvesti į du failus | 4ms |
-| 100 | Pilna trukme (total time taken) | 8ms |
+| 1000 | Generuoti | 1ms |
+| 1000 | Rušiuoti | 1ms |
+| 1000 | Isvesti į du failus | 4ms |
+| 1000 | Pilna trukme (total time taken) | 8ms |
 | ------ | ------ |  ------ | 
-| 1000 | Generuoti | 3ms |
-| 1000 | Rušiuoti | 2ms |
-| 1000 | Isvesti į du failus | 5ms |
-| 1000 | Pilna trukme (total time taken) | 11ms |
+| 10000 | Generuoti | 3ms |
+| 10000 | Rušiuoti | 2ms |
+| 10000 | Isvesti į du failus | 5ms |
+| 10000 | Pilna trukme (total time taken) | 11ms |
 | ------ | ------ |  ------ | 
-| 10000 | Generuoti | 25ms |
-| 10000 | Rušiuoti | 8ms |
-| 10000 | Isvesti į du failus | 11ms |
-| 10000 | Pilna trukme (total time taken) | 45ms |
+| 100000 | Generuoti | 25ms |
+| 100000 | Rušiuoti | 8ms |
+| 100000 | Isvesti į du failus | 11ms |
+| 100000 | Pilna trukme (total time taken) | 45ms |
 | ------ | ------ |  ------ | 
-| 100000 | Generuoti | 272ms |
-| 100000 | Rušiuoti | 61ms |
-| 100000 | Isvesti į du failus | 104ms |
-| 100000 | Pilna trukme (total time taken) | 439ms |
+| 1000000 | Generuoti | 272ms |
+| 1000000 | Rušiuoti | 61ms |
+| 1000000 | Isvesti į du failus | 104ms |
+| 1000000 | Pilna trukme (total time taken) | 439ms |
 | ------ | ------ |  ------ | 
-| 1000000 | Generuoti | 2993ms |
-| 1000000 | Rušiuoti | 836ms |
-| 1000000 | Isvesti į du failus | 1021ms |
-| 1000000 | Pilna trukme (total time taken) | 4852ms |
+| 10000000 | Generuoti | 2993ms |
+| 10000000 | Rušiuoti | 836ms |
+| 10000000 | Isvesti į du failus | 1021ms |
+| 10000000 | Pilna trukme (total time taken) | 4852ms |
 | ------ | ------ |  ------ | 
-| 10000000 | Generuoti | 34574ms |
-| 10000000 | Rušiuoti | 10601ms |
-| 10000000 | Isvesti į du failus | 11985ms |
-| 10000000 | Pilna trukme (total time taken) | 57168ms |
+| 100000000 | Generuoti | 34574ms |
+| 100000000 | Rušiuoti | 10601ms |
+| 100000000 | Isvesti į du failus | 11985ms |
+| 100000000 | Pilna trukme (total time taken) | 57168ms |
 
 
 # Dokumentacija
