@@ -5,13 +5,13 @@
 ## X Studentu generavimas ir išvedimas/skaitymas į vieną failą
 | Studentu skaicius | Uzduotis | Laiko trukme |
 | ------ | ------ |  ------ | 
-| 100 | Generuoti | 1ms (0.001s)|
-| 100 | Isvesti į failą | 4ms (0.004s) |
-| 100 | Skaityti failą | 1ms (0.001s) |
+| 1000 | Generuoti | 1ms (0.001s)|
+| 1000 | Isvesti į failą | 4ms (0.004s) |
+| 1000 | Skaityti failą | 1ms (0.001s) |
 | ------ | ------ |  ------ | 
-| 1000 | Generuoti | 3ms (0.003s)|
-| 1000 | Isvesti į failą | 4ms (0.004s)|
-| 1000 | Skaityti failą | 2ms (0.002s)|
+| 10000 | Generuoti | 3ms (0.003s)|
+| 10000 | Isvesti į failą | 4ms (0.004s)|
+| 10000 | Skaityti failą | 2ms (0.002s)|
 | ------ | ------ |  ------ | 
 | 10 000 | Generuoti | 24ms (0.024s)|
 | 10 000 | Isvesti į failą | 9ms (0.009s)|
