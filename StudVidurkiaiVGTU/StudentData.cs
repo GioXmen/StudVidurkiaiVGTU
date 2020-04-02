@@ -100,6 +100,53 @@ namespace StudVidurkiaiVGTU
             System.Console.WriteLine("Buvo prideta {0} studentų.", counter-1);
         }
 
+        public static void ReadInputFromGeneratedFile(string filePath)
+        {
+            string line;
+            int counter = 0;
+            System.IO.StreamReader file = null;
+            try
+            {
+                if (filePath == "")
+                {
+                    filePath = System.IO.Path.GetFullPath("studentai.txt");
+                }
+                file = new System.IO.StreamReader(filePath);
+            }
+            catch (System.IO.IOException ex)
+            {
+                Console.WriteLine(fileNotFoundExceptionMessage + "\n---------------------------------------------------\n" + ex);
+                Console.WriteLine("Buvo prideta {0} studentų. Įvesties failas nerastas", 0);
+                Console.WriteLine("---------------------------------------------------");
+                return;
+
+            }
+            Studentas studentas = new Studentas();
+            while ((line = file.ReadLine()) != null)
+            {
+                if (counter > 0)
+                {
+                    String[] splitData;
+                    try
+                    {
+                        splitData = line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                        if (splitData.Length < 2) { throw new FormatException("Not enough array elements"); }
+                    }
+                    catch (FormatException ex)
+                    {
+                        return;
+                    }
+                    studentas.Vardas = splitData[0];
+                    studentas.Pavarde = splitData[1];
+                    studentas.Vidurkis = splitData[2];
+                }
+                Program.studentai.Add(studentas);
+                counter++;
+            }
+            file.Close();
+            System.Console.WriteLine("Buvo prideta {0} studentų.", counter - 1);
+        }
+
         public static void ReadRandomInput(int studentuKiekis)
         {
             int index = 1;

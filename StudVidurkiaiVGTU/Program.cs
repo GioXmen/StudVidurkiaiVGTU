@@ -148,7 +148,14 @@ namespace StudVidurkiaiVGTU
             writer.Close();
             ostrm.Close();
             stopwatch.Stop();
-            Console.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds);
+            Console.WriteLine("Elapsed Time for file output is {0} ms", stopwatch.ElapsedMilliseconds);
+
+            Program.studentai.Clear();
+            Stopwatch stopwatchRead = new Stopwatch();
+            stopwatchRead.Start();
+            StudentData.ReadInputFromGeneratedFile("./studentai" + kiekis + ".txt");
+            stopwatchRead.Stop();
+            Console.WriteLine("Elapsed Time for file read after random generation is {0} ms", stopwatchRead.ElapsedMilliseconds);
         }
 
 

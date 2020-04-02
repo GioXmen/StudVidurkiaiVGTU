@@ -6,8 +6,8 @@ namespace StudVidurkiaiVGTU
     internal class Studentas
     {
         public List<double> NamuDarbai = new List<double>();
-        private double      Mediana;
-        private string      Vidurkis;
+        public double      Mediana;
+        public string      Vidurkis;
 
         public string Vardas { get; set; }
 
