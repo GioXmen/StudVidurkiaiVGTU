@@ -4,7 +4,7 @@
 #Note: rezultatai List tipui gali skirtis nuo v0.4, del padaryto refactor/rusiavimo logikos
 
 ## Analizes isvados
-# Is gautų rezultatų, galime teigti, jog list ir queue tipo konteineriai yra tapatūs vienai kitai (paklaidos terpėje), tačiau linkedlist yra šiek tiek lėtesnis šiai užduočiai. Darant paprastas operacijas, tai LinkedList daug neatsilieka, tačiau kuo sudėtingesnė operacija, tuo didesnis skirtumas atsiranda
+### Is gautų rezultatų, galime teigti, jog list ir queue tipo konteineriai yra tapatūs vienai kitai (paklaidos terpėje), tačiau linkedlist yra šiek tiek lėtesnis šiai užduočiai. Darant paprastas operacijas, tai LinkedList daug neatsilieka, tačiau kuo sudėtingesnė operacija, tuo didesnis skirtumas atsiranda
 
 ## Laiko analizė
 ## X Studentu nuskaitymas, rusiavimas ir išvedimas/skaitymas į du failus [List]
