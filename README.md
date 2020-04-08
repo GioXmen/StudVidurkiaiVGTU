@@ -148,13 +148,27 @@ Parametrai:
 
 #### RusiuotiXStudentu()
 ```csharp
- private static void RusiuotiXStudentu(int kiekis)
+ private static void RusiuotiXStudentu(int kiekis, String type)
 ```
 **Sugeneruoja ir surusiuoja x studentu  i du sarasus ir isveda i du failus**
 Parametrai:
 | įvestis | apibrėžimas |
 | ------ | ------ |
 | kiekis | norimas studentu kiekis |
+| type | konteinerio tipas |
+
+
+#### IsvestiIfaila()
+```csharp
+ private static void IsvestiIfaila(int kiekis, String type, String group)
+```
+**Sugeneruoja ir surusiuoja x studentu  i du sarasus ir isveda i du failus**
+Parametrai:
+| įvestis | apibrėžimas |
+| ------ | ------ |
+| kiekis | norimas studentu kiekis |
+| type | konteinerio tipas |
+| group | studentu rusiavimo grupe |
 
 #### **`Klasė - StudentDataSimple`**
 
@@ -172,20 +186,38 @@ public static void ReadInputFromConsole()
 
 #### ReadInputFromFile()
 ```csharp
- public static void ReadInputFromFile()
+ public static void ReadInputFromFile(int kiekis, String tipas, Boolean sort, Boolean full)
 ```
+Parametrai:
+| įvestis | apibrėžimas |
+| ------ | ------ |
+| kiekis | norimas studentu kiekis |
+| tipas | konteinerio tipas |
+| sort | rusiuoti ar ne |
+| full | failo tipas (su ar be namu darbu) |
+
 **Ivesti gauna is failo ir talpina į public Listą esantį klasėje "Program"**
 
 #### GetVidurkis()
 ```csharp
- public string GetVidurkis()
+ public string GetVidurkis(List<double> NamuDarbai, double Egzaminas)
 ```
+ Parametrai:
+| įvestis | apibrėžimas |
+| ------ | ------ |
+| NamuDarbai | studento namu darbai |
+| Egzaminas | studento egzamino rezultatas |
 **Suskaičiuoja, nustato ir gražiną vidurkį**
 
 #### GetMediana()
 ```csharp
-  public string GetMediana()
+  public string GetMediana(List<double> NamuDarbai, double Egzaminas)
 ```
+ Parametrai:
+| įvestis | apibrėžimas |
+| ------ | ------ |
+| NamuDarbai | studento namu darbai |
+| Egzaminas | studento egzamino rezultatas |
 **Nustato ir gražiną medianą**
 
 #### SkaiciuotiMediana()
