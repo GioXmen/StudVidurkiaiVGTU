@@ -76,6 +76,8 @@
 | ShowMenu() | Parodo pasirenkamajį meniu per konsolę| StudVidurkiaiVGTU.Program |
 | PrintStudentsRezultatai() | Spausdina studentus ir jų paskaičiuotus balus pagal formules | StudVidurkiaiVGTU.Program |
 | PrintStudents() | Spausdina studentus | StudVidurkiaiVGTU.Program |
+| GeneruotiXStudentuIFaila() | Generuoja ir spausdina studentus is studentai list objekto i faila | StudVidurkiaiVGTU.Program |
+| RusiuotiXStudentu() | Nuskaito X studentu is failo, surusiuoja i dvi grupes | StudVidurkiaiVGTU.Program |
 | ReadInputFromConsole() | Nuskaito įvesti iš konsolės į Listą| StudVidurkiaiVGTU.StudentData |
 | ReadRandomInput() | Sugeneruoja įvesti ir talpina į Listą | StudVidurkiaiVGTU.StudentData |
 | ReadInputFromFile() | Ivesti gaunama is failo ir talpina į Listą | StudVidurkiaiVGTU.StudentData |
