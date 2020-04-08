@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace StudVidurkiaiVGTU
 {
@@ -16,16 +15,6 @@ namespace StudVidurkiaiVGTU
         public double Mediana { get; set; }
 
         public double Vidurkis { get; set; }
-
-        public StudentasSimple(List<double> namuDarbai, double mediana, double vidurkis, string vardas, string pavarde, double egzaminas)
-        {
-            NamuDarbai = namuDarbai;
-            Mediana = mediana;
-            Vidurkis = vidurkis;
-            Vardas = vardas;
-            Pavarde = pavarde;
-            Egzaminas = egzaminas;
-        }
 
         public StudentasSimple()
         {

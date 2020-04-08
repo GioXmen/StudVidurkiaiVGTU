@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 
 namespace StudVidurkiaiVGTU
 {
@@ -19,7 +18,7 @@ namespace StudVidurkiaiVGTU
             Console.WriteLine("--------------------------------------------");
 
             string duomenys = Console.ReadLine();
-            ParseStudent(duomenys);
+            ParseStudent(duomenys, true);
 
             Console.WriteLine("Ar norite dar viena studenta prideti? [Y/N]:  ");
 
@@ -30,7 +29,7 @@ namespace StudVidurkiaiVGTU
             }
         }
 
-        public static void ReadInputFromFile(int kiekis, String tipas, Boolean sort)
+        public static void ReadInputFromFile(int kiekis, String tipas, Boolean sort, Boolean full)
         {
             string line;
             int counter = 0;
@@ -55,7 +54,7 @@ namespace StudVidurkiaiVGTU
             {
                 if (counter > 0)
                 {
-                    studentas = ParseStudent(line);
+                    studentas = ParseStudent(line, full);
 
                     if (studentas == null) { continue; }
 
@@ -137,10 +136,9 @@ namespace StudVidurkiaiVGTU
             }
         }
 
-        private static StudentasSimple ParseStudent(String duomenys)
+
+        private static StudentasSimple ParseStudent(String duomenys, Boolean full)
         {
-/*            Stopwatch stopwatchT = new Stopwatch();
-            stopwatchT.Start();*/
             StudentasSimple studentas = new StudentasSimple();
             String[] splitData;
             try
@@ -150,36 +148,44 @@ namespace StudVidurkiaiVGTU
             }
             catch (FormatException ex)
             {
+                //Console.WriteLine("Netinkamai įvesti studentų duomenys!");
                 return null;
             }
 
             studentas.Vardas = splitData[0];
             studentas.Pavarde = splitData[1];
-            for (int i = 2; i < 7; i++)
+
+            if (full)
             {
+                for (int i = 2; i < 7; i++)
+                {
+                    try
+                    {
+                        studentas.NamuDarbai.Add(double.Parse(splitData[i]));
+                    }
+                    catch (Exception ex)
+                    {
+                        //Console.WriteLine(formatExceptionMessage + "\n" + ex); //Atkomentuoti norint pamatyti exception message
+                        studentas.NamuDarbai.Add(defaultValue);
+                    }
+                }
+
                 try
                 {
-                    studentas.NamuDarbai.Add(double.Parse(splitData[i]));
+                    studentas.Egzaminas = double.Parse(splitData[7]);
                 }
                 catch (Exception ex)
                 {
-                    studentas.NamuDarbai.Add(defaultValue);
+                    //Console.WriteLine(formatExceptionMessage + "\n" + ex);
+                    studentas.Egzaminas = defaultValue;
                 }
+                studentas.Vidurkis = GetVidurkis(studentas.NamuDarbai, studentas.Egzaminas);
+                studentas.Mediana = GetMediana(studentas.NamuDarbai, studentas.Egzaminas);
             }
-
-            try
+            else
             {
-                studentas.Egzaminas = double.Parse(splitData[7]);
+                studentas.Vidurkis = double.Parse(splitData[2]);
             }
-            catch (Exception ex)
-            {
-                studentas.Egzaminas = defaultValue;
-            }
-
-            studentas.Vidurkis = GetVidurkis(studentas.NamuDarbai, studentas.Egzaminas);
-            studentas.Mediana  = GetMediana(studentas.NamuDarbai, studentas.Egzaminas);
-/*            stopwatchT.Stop();
-            Console.WriteLine("Elapsed Time for file read {0} ms", stopwatchT.ElapsedMilliseconds);*/
 
             return studentas;
         }

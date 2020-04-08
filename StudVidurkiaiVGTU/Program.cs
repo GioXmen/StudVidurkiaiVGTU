@@ -30,7 +30,7 @@ namespace StudVidurkiaiVGTU
     {
         public static void ShowMenu()
         {
-            Console.WriteLine("Studentų pažymiai v0.4 - Ernestas Lobačevskis");
+            Console.WriteLine("Studentų pažymiai v0.5 - Ernestas Lobačevskis");
             Console.WriteLine("--------------------------------------------");
             Console.WriteLine("--------------------------------------------");
             Console.WriteLine("cl      - Console įvedimas");
@@ -38,15 +38,16 @@ namespace StudVidurkiaiVGTU
             Console.WriteLine("rnd     - Įvestis sugeneruota");
             Console.WriteLine("printr  - Spausdint rezultatus, rušiuoti pagal vardus");
             Console.WriteLine("printrf - Ivesti sugeneruotus studentus i faila");
-            Console.WriteLine("print   - Spausdint studentus [raw data]");
             Console.WriteLine("end     - Baigti programa");
             Console.WriteLine("clear   - Valyti išvedimą");
             Console.WriteLine("--------------------------------------------");
             Console.WriteLine("          Greičio matavimo modulis          ");
             Console.WriteLine("--------------------------------------------");
             Console.WriteLine("g1     - Generuoti x studentų į failą");
-            Console.WriteLine("g2     - Rušiuoti  x generuotų studentų");
-            Console.WriteLine("Output dir: \\StudVidurkiaiVGTU\\StudVidurkiaiVGTU\\bin\\Debug\\netcoreapp3.1");
+            Console.WriteLine("g2L    - Rušiuoti  x generuotų studentų [List]");
+            Console.WriteLine("g2LL   - Rušiuoti  x generuotų studentų [LinkedList]");
+            Console.WriteLine("g2Q    - Rušiuoti  x generuotų studentų [Queue]");
+            Console.WriteLine("Output/Input dir: \\StudVidurkiaiVGTU\\StudVidurkiaiVGTU\\bin\\Debug\\netcoreapp3.1");
 
             bool baigti = false;
             while (baigti.Equals(false))
@@ -66,7 +67,7 @@ namespace StudVidurkiaiVGTU
                         Console.WriteLine("Kiek studentų tures?");
                         tekstas = Console.ReadLine();
                         Int32.TryParse(tekstas, out skaicius);
-                        StudentDataSimple.ReadInputFromFile(skaicius, "List", false);
+                        StudentDataSimple.ReadInputFromFile(skaicius, "List", false, true);
                         break;
                     case "rnd":
                         Program.studentaiL.Clear();
@@ -81,9 +82,6 @@ namespace StudVidurkiaiVGTU
                     case "printrf":
                         PrintStudentsRezultataiIFaila();
                         break;
-                    case "print":
-                        PrintStudents();
-                        break;
                     case "g1":
                         Program.studentaiL.Clear();
                         Console.WriteLine("Kiek studentų naudoti?");
@@ -91,12 +89,26 @@ namespace StudVidurkiaiVGTU
                         Int32.TryParse(tekstas, out skaicius);
                         GeneruotiXStudentuIFaila(skaicius);
                         break;
-                    case "g2":
+                    case "g2L":
                         Program.studentaiL.Clear();
                         Console.WriteLine("Kiek studentų traukti? [Turi buti pirma sugeneruota]");
                         tekstas = Console.ReadLine();
                         Int32.TryParse(tekstas, out skaicius);
-                        RusiuotiXStudentu(skaicius);
+                        RusiuotiXStudentu(skaicius, "List");
+                        break;
+                    case "g2LL":
+                        Program.studentaiL.Clear();
+                        Console.WriteLine("Kiek studentų traukti? [Turi buti pirma sugeneruota]");
+                        tekstas = Console.ReadLine();
+                        Int32.TryParse(tekstas, out skaicius);
+                        RusiuotiXStudentu(skaicius, "LinkedList");
+                        break;
+                    case "g2Q":
+                        Program.studentaiL.Clear();
+                        Console.WriteLine("Kiek studentų traukti? [Turi buti pirma sugeneruota]");
+                        tekstas = Console.ReadLine();
+                        Int32.TryParse(tekstas, out skaicius);
+                        RusiuotiXStudentu(skaicius, "Queue");
                         break;
                     case "end":
                         baigti = true;
@@ -152,17 +164,6 @@ namespace StudVidurkiaiVGTU
             ostrm.Close();
         }
 
-        public static void PrintStudents()
-        {
-            foreach (var studentas in Program.studentaiL)
-            {
-                Console.WriteLine("-------------------------------------------------------------------------");
-                Console.WriteLine("Vardas: " + studentas.Vardas + "\n" + "Pavarde: " + studentas.Pavarde + "\n" +
-                    "NamuDarbai:" + string.Join("\t", studentas.NamuDarbai) + "\n" + "Egzaminas: " + studentas.Egzaminas);
-                Console.WriteLine("-------------------------------------------------------------------------");
-            }
-        }
-
         public static void GeneruotiXStudentuIFaila(int kiekis)
         {
             Stopwatch stopwatchGen = new Stopwatch();
@@ -189,10 +190,13 @@ namespace StudVidurkiaiVGTU
                 return;
             }
             Console.SetOut(writer);
-            Console.WriteLine("{0, 5} {1, 16} {2, 25}", "Vardas", "Pavardė", "Galutinis (Vid.)");
+            Console.WriteLine("{0, 5} {1, 15} {2, 16} {3, 17} {4, 18} {5, 19} {6, 20} {7, 21} {8, 22}",
+                "Vardas", "Pavardė", "ND1", "ND2", "ND3", "ND4", "ND5", "ND6", "Egzaminas");
             foreach (var studentas in Program.studentaiL)
             {
-                Console.WriteLine("{0, 5} {1, 18} {2, 20}", studentas.Vardas, studentas.Pavarde, studentas.Vidurkis.ToString("0.##"));
+                Console.WriteLine("{0, 5} {1, 15} {2, 16} {3, 17} {4, 18} {5, 19} {6, 20} {7, 21} {8, 22}",
+                    studentas.Vardas, studentas.Pavarde, studentas.NamuDarbai[0], studentas.NamuDarbai[1],
+                    studentas.NamuDarbai[2], studentas.NamuDarbai[3], studentas.NamuDarbai[4], studentas.NamuDarbai[5], studentas.Egzaminas);
             }
             Console.SetOut(oldOut);
             writer.Close();
@@ -201,11 +205,11 @@ namespace StudVidurkiaiVGTU
             Console.WriteLine("Elapsed Time for file output is {0} ms", stopwatch.ElapsedMilliseconds);
 
             Program.studentaiL.Clear();
-            StudentDataSimple.ReadInputFromFile(kiekis, "List", false);
+            StudentDataSimple.ReadInputFromFile(kiekis, "List", false, false);
         }
 
 
-        public static void RusiuotiXStudentu(int kiekis)
+        public static void RusiuotiXStudentu(int kiekis, String type)
         {
             Stopwatch stopwatchProgramFull = new Stopwatch();
             stopwatchProgramFull.Start();
@@ -213,59 +217,101 @@ namespace StudVidurkiaiVGTU
 
             Stopwatch stopwatchGen = new Stopwatch();
             stopwatchGen.Start();
-            StudentDataSimple.ReadRandomInput(kiekis);
+            StudentDataSimple.ReadInputFromFile(kiekis, type, true, true);
             stopwatchGen.Stop();
-            Console.WriteLine("Elapsed Time for random generation is {0} ms", stopwatchGen.ElapsedMilliseconds);
-
-
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-
-            Program.vargsiukaiL = Program.studentaiL.Where(o => o.Vidurkis < 5).ToList();
-            Program.kietiakiaiL = Program.studentaiL.Except(Program.vargsiukaiL).ToList();
-            stopwatch.Stop();
-            Console.WriteLine("Elapsed Time for Sort part is {0} ms", stopwatch.ElapsedMilliseconds);
-            Program.studentaiL.Clear();
-
+            Console.WriteLine("Elapsed Time for read and sort is {0} ms", stopwatchGen.ElapsedMilliseconds);
 
             Stopwatch stopwatchFile = new Stopwatch();
             stopwatchFile.Start();
-            IsvestiIfaila(kiekis, Program.vargsiukaiL, "Vargsiukai");
-            IsvestiIfaila(kiekis, Program.kietiakiaiL, "Kietiakiai");
+            IsvestiIfaila(kiekis, type, "Vargsiukai");
+            IsvestiIfaila(kiekis, type, "Kietiakiai");
             stopwatchFile.Stop();
-            Console.WriteLine("Elapsed Time for random generation is {0} ms", stopwatchFile.ElapsedMilliseconds);
+            Console.WriteLine("Elapsed Time for output to file is {0} ms", stopwatchFile.ElapsedMilliseconds);
 
             stopwatchProgramFull.Stop();
             Console.WriteLine("Elapsed Time for whole execution generation is {0} ms", stopwatchProgramFull.ElapsedMilliseconds);
         }
 
-        public static void IsvestiIfaila(int kiekis, List<StudentasSimple> isvestis, String type)
+        public static void IsvestiIfaila(int kiekis, String type, String group)
         {
+
+            FileStream ostrm;
+            StreamWriter writer;
+            TextWriter oldOut = Console.Out;
+            try
             {
-                FileStream ostrm;
-                StreamWriter writer;
-                TextWriter oldOut = Console.Out;
-                try
-                {
-                    ostrm = new FileStream("./studentai" + kiekis + type + ".txt", FileMode.Create, FileAccess.Write);
-                    writer = new StreamWriter(ostrm);
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Cannot open studentai" + kiekis + type + ".txt for writing");
-                    Console.WriteLine(e.Message);
-                    return;
-                }
-                Console.SetOut(writer);
-                Console.WriteLine("{0, 5} {1, 16} {2, 25}", "Vardas", "Pavardė", "Galutinis (Vid.)");
-                foreach (var studentas in isvestis)
-                {
-                    Console.WriteLine("{0, 5} {1, 18} {2, 20}", studentas.Vardas, studentas.Pavarde, studentas.Vidurkis.ToString("0.##"));
-                }
-                Console.SetOut(oldOut);
-                writer.Close();
-                ostrm.Close();
+                ostrm = new FileStream("./studentai" + kiekis + group + type + ".txt", FileMode.Create, FileAccess.Write);
+                writer = new StreamWriter(ostrm);
             }
+            catch (Exception e)
+            {
+                Console.WriteLine("Cannot open studentai" + kiekis + group + type + ".txt for writing");
+                Console.WriteLine(e.Message);
+                return;
+            }
+            Console.SetOut(writer);
+            Console.WriteLine("{0, 5} {1, 16} {2, 25}", "Vardas", "Pavardė", "Galutinis (Vid.)");
+
+            switch (type)
+            {
+                case "List":
+                    if (group.Equals("Vargsiukai"))
+                    {
+                        List<StudentasSimple> isvestis = Program.vargsiukaiL;
+                        foreach (var studentas in isvestis)
+                        {
+                            Console.WriteLine("{0, 5} {1, 18} {2, 20}", studentas.Vardas, studentas.Pavarde, studentas.Vidurkis.ToString("0.##"));
+                        }
+                    } else if (group.Equals("Kietiakiai"))
+                    {
+                        List<StudentasSimple> isvestis = Program.kietiakiaiL;
+                        foreach (var studentas in isvestis)
+                        {
+                            Console.WriteLine("{0, 5} {1, 18} {2, 20}", studentas.Vardas, studentas.Pavarde, studentas.Vidurkis.ToString("0.##"));
+                        }
+                    }
+                    break;
+                case "LinkedList":
+                    if (group.Equals("Vargsiukai"))
+                    {
+                        LinkedList<StudentasSimple> isvestis = Program.vargsiukaiLL;
+                        foreach (var studentas in isvestis)
+                        {
+                            Console.WriteLine("{0, 5} {1, 18} {2, 20}", studentas.Vardas, studentas.Pavarde, studentas.Vidurkis.ToString("0.##"));
+                        }
+                    }
+                    else if (group.Equals("Kietiakiai"))
+                    {
+                        LinkedList<StudentasSimple> isvestis = Program.kietiakiaiLL;
+                        foreach (var studentas in isvestis)
+                        {
+                            Console.WriteLine("{0, 5} {1, 18} {2, 20}", studentas.Vardas, studentas.Pavarde, studentas.Vidurkis.ToString("0.##"));
+                        }
+                    }
+                    break;
+                case "Queue":
+                    if (group.Equals("Vargsiukai"))
+                    {
+                        Queue<StudentasSimple> isvestis = Program.vargsiukaiQ;
+                        foreach (var studentas in isvestis)
+                        {
+                            Console.WriteLine("{0, 5} {1, 18} {2, 20}", studentas.Vardas, studentas.Pavarde, studentas.Vidurkis.ToString("0.##"));
+                        }
+                    }
+                    else if (group.Equals("Kietiakiai"))
+                    {
+                        Queue<StudentasSimple> isvestis = Program.kietiakiaiQ;
+                        foreach (var studentas in isvestis)
+                        {
+                            Console.WriteLine("{0, 5} {1, 18} {2, 20}", studentas.Vardas, studentas.Pavarde, studentas.Vidurkis.ToString("0.##"));
+                        }
+                    }
+                    break;
+            }
+            Console.SetOut(oldOut);
+            writer.Close();
+            ostrm.Close();
+
         }
     }
 }
