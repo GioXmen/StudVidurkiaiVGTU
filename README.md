@@ -207,6 +207,7 @@ Parametrai:
 | ------ | ------ |
 | NamuDarbai | studento namu darbai |
 | Egzaminas | studento egzamino rezultatas |
+
 **Suskaičiuoja, nustato ir gražiną vidurkį**
 
 #### GetMediana()
@@ -218,6 +219,7 @@ Parametrai:
 | ------ | ------ |
 | NamuDarbai | studento namu darbai |
 | Egzaminas | studento egzamino rezultatas |
+
 **Nustato ir gražiną medianą**
 
 #### SkaiciuotiMediana()
