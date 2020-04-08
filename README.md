@@ -78,30 +78,44 @@
 ## Objektai / Masyvai
 | objektas / masyvas | classpath |
 | ------ | ------ | 
-| studentai |StudVidurkiaiVGTU.Program |
+| studentaiL |StudVidurkiaiVGTU.Program |
+| vargsiukaiL |StudVidurkiaiVGTU.Program |
+| kietiakiaiL |StudVidurkiaiVGTU.Program |
+| ------ | ------ |
+| studentaiLL |StudVidurkiaiVGTU.Program |
+| vargsiukaiLL |StudVidurkiaiVGTU.Program |
+| kietiakiaiLL |StudVidurkiaiVGTU.Program |
+| ------ | ------ |
+| studentaiQ |StudVidurkiaiVGTU.Program |
+| vargsiukaiQ |StudVidurkiaiVGTU.Program |
+| kietiakiaiQ |StudVidurkiaiVGTU.Program |
+
 ## Objektų kintamieji
 | Kintamasis | Classpath |Apibudinimas |
 | ------ | ------ | ------ | 
-| Vardas | StudVidurkiaiVGTU.Studentas | Studento vardas  |
-| Pavarde | StudVidurkiaiVGTU.Studentas | Studento pavarde|
-| Egzaminas | StudVidurkiaiVGTU.Studentas | Studento egzamino balas|
-| NamuDarbai | StudVidurkiaiVGTU.Studentas | Namu darbai (List)|
-| Mediana | StudVidurkiaiVGTU.Studentas | Namu darbu mediana|
-| Vidurkis | StudVidurkiaiVGTU.Studentas | Namu darbu vidurkis|
+| Vardas | StudVidurkiaiVGTU.StudentasSimple | Studento vardas  |
+| Pavarde | StudVidurkiaiVGTU.StudentasSimple | Studento pavarde|
+| Egzaminas | StudVidurkiaiVGTU.StudentasSimple | Studento egzamino balas|
+| NamuDarbai | StudVidurkiaiVGTU.StudentasSimple | Namu darbai (List)|
+| Mediana | StudVidurkiaiVGTU.StudentasSimple | Namu darbu mediana|
+| Vidurkis | StudVidurkiaiVGTU.StudentasSimple | Namu darbu vidurkis|
 
 ## Funkcijos
 | funkcija | apibrėžimas | classpath |
 | ------ | ------ | ------ |
 | ShowMenu() | Parodo pasirenkamajį meniu per konsolę| StudVidurkiaiVGTU.Program |
 | PrintStudentsRezultatai() | Spausdina studentus ir jų paskaičiuotus balus pagal formules | StudVidurkiaiVGTU.Program |
-| PrintStudents() | Spausdina studentus | StudVidurkiaiVGTU.Program |
-| ReadInputFromConsole() | Nuskaito įvesti iš konsolės į Listą| StudVidurkiaiVGTU.StudentData |
-| ReadRandomInput() | Sugeneruoja įvesti ir talpina į Listą | StudVidurkiaiVGTU.StudentData |
-| ReadInputFromFile() | Ivesti gaunama is failo ir talpina į Listą | StudVidurkiaiVGTU.StudentData |
-| GetVidurkis() | Suskaičiuoja, nustato ir gražiną vidurkį| StudVidurkiaiVGTU.Studentas |
-| GetMediana() | Nustato ir gražiną medianą | StudVidurkiaiVGTU.Studentas |
-| SkaiciuotiMediana() | Suskaičiuoja medianą | StudVidurkiaiVGTU.Studentas |
-| SkaiciuotiMediana(double[] skaičiai) | Suskaičiuoja medianą su masyvais| StudVidurkiaiVGTU.StudentasArray |
+| PrintStudentsRezultataiIFaila() | Spausdina studentus is studentai list objekto i faila | StudVidurkiaiVGTU.Program |
+| GeneruotiXStudentuIFaila() | Generuoja ir spausdina studentus is studentai list objekto i faila | StudVidurkiaiVGTU.Program |
+| RusiuotiXStudentu() | Nuskaito X studentu is failo, surusiuoja i dvi grupes | StudVidurkiaiVGTU.Program |
+| IsvestiIfaila() | Spausdina studentu grupes i failus | StudVidurkiaiVGTU.Program |
+| ReadInputFromConsole() | Nuskaito įvesti iš konsolės į duomenu eilute| StudVidurkiaiVGTU.StudentDataSimple |
+| ReadRandomInput() | Sugeneruoja įvesti ir talpina į Listą | StudVidurkiaiVGTU.StudentDataSimple |
+| ReadInputFromFile() | Ivesti gaunama is failo ir talpina į Listą | StudVidurkiaiVGTU.StudentDataSimple |
+| ParseStudent() | Ivestied duomenu eiute talpina i studento objekta ir grazina | StudVidurkiaiVGTU.StudentDataSimple |
+| GetVidurkis() | Suskaičiuoja, nustato ir gražiną vidurkį| StudVidurkiaiVGTU.StudentDataSimple |
+| GetMediana() | Nustato ir gražiną medianą | StudVidurkiaiVGTU.StudentDataSimple |
+| SkaiciuotiMediana() | Suskaičiuoja medianą | StudVidurkiaiVGTU.StudentDataSimple |
 
 
 
@@ -121,12 +135,6 @@ public static void ShowMenu()
  public static void PrintStudentsRezultatai()
 ```
 **Spausdina studentus ir jų balą skaičiuotą pagal formules naudojant "List"**
-
-#### PrintStudents()
-```csharp
- public static void PrintStudents()
-```
-**Spausdina studentus**
 
 #### GeneruotiXStudentuIFaila()
 ```csharp
@@ -148,14 +156,13 @@ Parametrai:
 | ------ | ------ |
 | kiekis | norimas studentu kiekis |
 
-#### **`Klasė - StudentData`**
+#### **`Klasė - StudentDataSimple`**
 
 #### ReadInputFromConsole()
 ```csharp
 public static void ReadInputFromConsole()
 ```
 **Nuskaito įvesti iš konsolės į public Listą esantį klasėje "Program"**
-
 
 #### ReadRandomInput()
 ```csharp
@@ -168,8 +175,6 @@ public static void ReadInputFromConsole()
  public static void ReadInputFromFile()
 ```
 **Ivesti gauna is failo ir talpina į public Listą esantį klasėje "Program"**
-
-#### **`Klasė - Studentas`**
 
 #### GetVidurkis()
 ```csharp
@@ -193,14 +198,3 @@ Parametrai:
 | ------ | ------ |
 | skaičiai | skaičiai iš kurių bus skaičiuojama mediana |
 
-#### **`Klasė - StudentasArray`**
-
-#### SkaiciuotiMediana()
-```csharp
- private static double SkaiciuotiMediana(double[] skaičiai)
-```
-**Suskaičiuoja ir gražina medianą pagal duotus skaičius**
-Parametrai:
-| įvestis | apibrėžimas |
-| ------ | ------ |
-| skaičiai | skaičiai iš kurių bus skaičiuojama mediana |
