@@ -48,8 +48,6 @@ namespace StudVidurkiaiVGTU
 
             }
             StudentasSimple studentas = null;
-            Stopwatch stopwatchRead = new Stopwatch();
-            stopwatchRead.Start();
             while ((line = file.ReadLine()) != null)
             {
                 if (counter > 0)
@@ -108,8 +106,6 @@ namespace StudVidurkiaiVGTU
                 counter++;
             }
             file.Close();
-            stopwatchRead.Stop();
-            Console.WriteLine("Elapsed Time for file read {0} ms", stopwatchRead.ElapsedMilliseconds);
             System.Console.WriteLine("Buvo prideta {0} studentų.", counter - 1);
         }
 
