@@ -3,37 +3,37 @@
 
 ## Release aprašai trumpi
 ### Release v0.1
-Pridėtas Nuskaitymas iš konsolės studentų
-Galimybė sugeneruoti įvesti
-Pridėjimas į Array arba List tipą
-Spausdinimas su vidrukiais, mediana arba "raw"
+- Pridėtas Nuskaitymas iš konsolės studentų
+- Galimybė sugeneruoti įvesti
+- Pridėjimas į Array arba List tipą
+- Spausdinimas su vidrukiais, mediana arba "raw"
 ### Release v0.2
-Mažas refactor
-Nuskaitymas iš failų palaikomas
-Ištraukiamas "Array" palaikymas
+- Mažas refactor
+- Nuskaitymas iš failų palaikomas
+- Ištraukiamas "Array" palaikymas
 ### Release v0.3
-Mažas refactor
-Pataisos v0.2 versijai keli
-Pridėtas exception handling nenumatytom situacijom
+- Mažas refactor
+- Pataisos v0.2 versijai keli
+- Pridėtas exception handling nenumatytom situacijom
 ### Release v0.4
-Pridėtas laiko/spartos skaičiavimas studentų įvesčiai, rušiavimui ir išvedimui
-Pridėta spartos analizė programos veikimui
-Laiko matavimas sekundėmis pridėtas prie analizės
+- Pridėtas laiko/spartos skaičiavimas studentų įvesčiai, rušiavimui ir išvedimui
+- Pridėta spartos analizė programos veikimui
+- Laiko matavimas sekundėmis pridėtas prie analizės
 ### Release v0.5
-Didelis refactor, kad palaikyti tris konteinerių tipus vienu metu - List, LinkedList ir Queue
-Spartos analizė visiems trims konteinerių tipams
-Analizės išvados
+- Didelis refactor, kad palaikyti tris konteinerių tipus vienu metu - List, LinkedList ir Queue
+- Spartos analizė visiems trims konteinerių tipams
+- Analizės išvados
 ### Release v1.0
-Nauja rušiavimo strategiją (nr.2), kai nekuriami tris konteineriai vienu metu
-Pridėta Atminties naudojimo analizė visiem triem konteineriam, bei strategijoms
-Laiko analizė antrai strategijai
-Atminties analizė pirmai ir antrai strategijai
-Išvados spartos ir atminties naudojimo abiejų strategijų
+- Nauja rušiavimo strategiją (nr.2), kai nekuriami tris konteineriai vienu metu
+- Pridėta Atminties naudojimo analizė visiem triem konteineriam, bei strategijoms
+- Laiko analizė antrai strategijai
+- Atminties analizė pirmai ir antrai strategijai
+- Išvados spartos ir atminties naudojimo abiejų strategijų
 
 ## Naudojimo  ir diegimo instrukcija
-### Kodą klonuoti iš github, su "SourceTree" arba pačiu VisualStudio
-### Paleidus programą, perskaityti išvesta meniu ir sekti ekrano instrukcijas
-### NB! - Kai kurioms funkcijoms pries jungiant reikia sugeneruoti studentų failus!
+-  Kodą klonuoti iš github, su "SourceTree" arba pačiu VisualStudio
+-  Paleidus programą, perskaityti išvesta meniu ir sekti ekrano instrukcijas
+-  NB! - Kai kurioms funkcijoms pries jungiant reikia sugeneruoti studentų failus!
 
 
 ## Analizes isvados
