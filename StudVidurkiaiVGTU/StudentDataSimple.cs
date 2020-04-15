@@ -109,6 +109,7 @@ namespace StudVidurkiaiVGTU
             }
             else if (strategija == 2)
             {
+                int removalCounter = 0;
                 while ((line = file.ReadLine()) != null)
                 {
                     if (counter > 0)
@@ -125,7 +126,8 @@ namespace StudVidurkiaiVGTU
                             {
                                 if (studentas.Vidurkis < 5)
                                 {
-                                    Program.studentaiL.Remove(studentas);
+                                    Program.studentaiL.RemoveAt(removalCounter - 1);
+                                    removalCounter -= 1;
                                     Program.vargsiukaiL.Add(studentas);
                                 }
                             }
@@ -156,6 +158,7 @@ namespace StudVidurkiaiVGTU
                         }
                     }
                     counter++;
+                    removalCounter++;
                 }
             }
             else System.Console.WriteLine("Netinkama strategija pasirinkta");
