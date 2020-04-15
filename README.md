@@ -37,7 +37,7 @@ Išvados spartos ir atminties naudojimo abiejų strategijų
 
 
 ## Analizes isvados
-### Iš gautų rezultatų, galime teigti, jog list tipo konteineriam antra strategija yra "skaudžiausia", jos veikimo sparta sumažėja (net ir su pritaikytais List algoritmo optimizacijomis), Linked List ir Queue/Dequeue irgi praranda šiek tiek spartos, tačiau mažiau. Antroji strategija išlaisvino didelį kiekį atminties, kadangi mažiau studentų laikome atmintyje. Kombinuojant optimizacija su antrą strategiją, gauname algoritma kuris yra pakankamai spartus ir naudoja gerokai mažiau atminties
+### Iš gautų rezultatų, galime teigti, jog list tipo konteineriam antra strategija yra "skaudžiausia", jos veikimo sparta sumažėja (net ir su pritaikytais List algoritmo optimizacijomis), Linked List ir Queue/Dequeue irgi praranda šiek tiek spartos, tačiau mažiau. Antroji strategija išlaisvino didelį kiekį atminties, kadangi mažiau studentų laikome atmintyje. Kombinuojant optimizacija su antrą strategiją, gauname algoritma kuris yra pakankamai spartus ir naudoja gerokai mažiau atminties [List konteineriui]
 
 ## Laiko analizė - 1 strategija
 ## X Studentu nuskaitymas, rusiavimas ir išvedimas/skaitymas į du failus [List]
