@@ -29,7 +29,7 @@ namespace StudVidurkiaiVGTU
             }
         }
 
-        public static void ReadInputFromFile(int kiekis, String tipas, Boolean sort, Boolean full)
+        public static void ReadInputFromFile(int kiekis, String tipas, Boolean sort, Boolean full, int strategija)
         {
             string line;
             int counter = 0;
@@ -48,63 +48,118 @@ namespace StudVidurkiaiVGTU
 
             }
             StudentasSimple studentas = null;
-            while ((line = file.ReadLine()) != null)
-            {
-                if (counter > 0)
+            if(strategija == 1) {
+                while ((line = file.ReadLine()) != null)
                 {
-                    studentas = ParseStudent(line, full);
-
-                    if (studentas == null) { continue; }
-
-
-                    if (tipas.Equals("List"))
+                    if (counter > 0)
                     {
-                        Program.studentaiL.Add(studentas);
-                        if (sort)
+                        studentas = ParseStudent(line, full);
+
+                        if (studentas == null) { continue; }
+
+
+                        if (tipas.Equals("List"))
                         {
-                            if (studentas.Vidurkis >= 5)
+                            Program.studentaiL.Add(studentas);
+                            if (sort)
                             {
-                                Program.kietiakiaiL.Add(studentas);
+                                if (studentas.Vidurkis >= 5)
+                                {
+                                    Program.kietiakiaiL.Add(studentas);
+                                }
+                                else
+                                {
+                                    Program.vargsiukaiL.Add(studentas);
+                                }
                             }
-                            else
+                        }
+                        if (tipas.Equals("LinkedList"))
+                        {
+                            Program.studentaiLL.AddLast(studentas);
+                            if (sort)
                             {
-                                Program.vargsiukaiL.Add(studentas);
+                                if (studentas.Vidurkis >= 5)
+                                {
+                                    Program.kietiakiaiLL.AddLast(studentas);
+                                }
+                                else
+                                {
+                                    Program.vargsiukaiLL.AddLast(studentas);
+                                }
+                            }
+                        }
+                        else if (tipas.Equals("Queue"))
+                        {
+                            Program.studentaiQ.Enqueue(studentas);
+                            if (sort)
+                            {
+                                if (studentas.Vidurkis >= 5)
+                                {
+                                    Program.kietiakiaiQ.Enqueue(studentas);
+                                }
+                                else
+                                {
+                                    Program.vargsiukaiQ.Enqueue(studentas);
+                                }
                             }
                         }
                     }
-                    if (tipas.Equals("LinkedList"))
-                    {
-                        Program.studentaiLL.AddLast(studentas);
-                        if (sort)
-                        {
-                            if (studentas.Vidurkis >= 5)
-                            {
-                                Program.kietiakiaiLL.AddLast(studentas);
-                            }
-                            else
-                            {
-                                Program.vargsiukaiLL.AddLast(studentas);
-                            }
-                        }
-                    }
-                    else if (tipas.Equals("Queue"))
-                    {
-                        Program.studentaiQ.Enqueue(studentas);
-                        if (sort)
-                        {
-                            if (studentas.Vidurkis >= 5)
-                            {
-                                Program.kietiakiaiQ.Enqueue(studentas);
-                            }
-                            else
-                            {
-                                Program.vargsiukaiQ.Enqueue(studentas);
-                            }
-                        }
-                    }
+                    counter++;
                 }
-                counter++;
             }
+            else if (strategija == 2)
+            {
+                while ((line = file.ReadLine()) != null)
+                {
+                    if (counter > 0)
+                    {
+                        studentas = ParseStudent(line, full);
+
+                        if (studentas == null) { continue; }
+
+
+                        if (tipas.Equals("List"))
+                        {
+                            Program.studentaiL.Add(studentas);
+                            if (sort)
+                            {
+                                if (studentas.Vidurkis < 5)
+                                {
+                                    Program.studentaiL.Remove(studentas);
+                                    Program.vargsiukaiL.Add(studentas);
+                                }
+                            }
+                        }
+                        if (tipas.Equals("LinkedList"))
+                        {
+                            Program.studentaiLL.AddLast(studentas);
+                            if (sort)
+                            {
+                                if (studentas.Vidurkis < 5)
+                                {
+                                    Program.studentaiLL.RemoveLast();
+                                    Program.vargsiukaiLL.AddLast(studentas);
+                                }
+                            }
+                        }
+                        else if (tipas.Equals("Queue"))
+                        {
+                            Program.studentaiQ.Enqueue(studentas);
+                            if (sort)
+                            {
+                                if (studentas.Vidurkis < 5)
+                                {
+                                    Program.studentaiQ.Dequeue();
+                                    Program.vargsiukaiQ.Enqueue(studentas);
+                                }
+                            }
+                        }
+                    }
+                    counter++;
+                }
+            }
+            else System.Console.WriteLine("Netinkama strategija pasirinkta");
+
             file.Close();
             System.Console.WriteLine("Buvo prideta {0} studentų.", counter - 1);
         }
