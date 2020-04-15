@@ -1,34 +1,38 @@
 # StudVidurkiaiVGTU
-## Integruotos programavimo aplinkos laboratorinis darbas v0.5
+## Integruotos programavimo aplinkos laboratorinis darbas v1.0
 
-#Note: rezultatai List tipui gali skirtis nuo v0.4, del padaryto refactor/rusiavimo logikos
 
 ## Analizes isvados
-### Is gautų rezultatų, galime teigti, jog list ir queue tipo konteineriai yra tapatūs vienai kitai (paklaidos terpėje), tačiau linkedlist yra šiek tiek lėtesnis šiai užduočiai. Darant paprastas operacijas, tai LinkedList daug neatsilieka, tačiau kuo sudėtingesnė operacija, tuo didesnis skirtumas atsiranda
+### Iš gautų rezultatų, galime teigti, jog list tipo konteineriam antra strategija yra "skaudžiausia", jos veikimo sparta sumažėja (net ir su pritaikytais List algoritmo optimizacijomis), Linked List ir Queue/Dequeue irgi praranda šiek tiek spartos, tačiau mažiau. Antroji strategija išlaisvino didelį kiekį atminties, kadangi mažiau studentų laikome atmintyje. Kombinuojant optimizacija su antrą strategiją, gauname algoritma kuris yra pakankamai spartus ir naudoja gerokai mažiau atminties
 
-## Laiko analizė
+## Laiko analizė - 1 strategija
 ## X Studentu nuskaitymas, rusiavimas ir išvedimas/skaitymas į du failus [List]
 | Studentu skaicius | Uzduotis | Laiko trukme |
 | ------ | ------ |  ------ | 
 | 1000 | Nuskaitymas ir Rusiavimas | 9ms (0.009s)|
 | 1000 | Isvedimas i faila | 4ms (0.004s) |
 | 1000 | Visos proceduros bendras laikas | 14ms (0.0014s) |
+| 1000 | Atminties naudota | 11MB |
 | ------ | ------ |  ------ | 
 | 10 000 | Nuskaitymas ir Rusiavimas | 40ms (0.040s)|
 | 10 000 | Isvedimas i faila | 9ms (0.009s)|
 | 10 000 | Visos proceduros bendras laikas | 51ms (0.0051s)|
+| 10 000 | Atminties naudota | 17MB |
 | ------ | ------ |  ------ | 
 | 100 000 | Nuskaitymas ir Rusiavimas | 347ms (0.347s)|
 | 100 000 | Isvedimas i faila | 68ms (0.068s)|
 | 100 000 | Visos proceduros bendras laikas | 416ms (0.416s)|
+| 100 000 | Atminties naudota | 51MB |
 | ------ | ------ |  ------ | 
 | 1000 000 | Nuskaitymas ir Rusiavimas | 3296ms (3.296s)|
 | 1000 000 | Isvedimas i faila | 677ms (0.677s)|
 | 1000 000 | Visos proceduros bendras laikas | 3973ms (3.973s)|
+| 1000 000 | Atminties naudota | 340MB |
 | ------ | ------ |  ------ | 
 | 1000 000 0 | Nuskaitymas ir Rusiavimas | 34192ms (34.192s)|
 | 1000 000 0 | Isvedimas i faila | 6271ms (6.271s)|
 | 1000 000 0 | Visos proceduros bendras laikas | 40464ms (40.464s)|
+| 1000 000 0 | Atminties naudota | 3950MB |
 
 ## X Studentu nuskaitymas, rusiavimas ir išvedimas/skaitymas į du failus [LinkedList]
 | Studentu skaicius | Uzduotis | Laiko trukme |
@@ -36,22 +40,27 @@
 | 1000 | Nuskaitymas ir Rusiavimas | 10ms (0.010s)|
 | 1000 | Isvedimas i faila | 5ms (0.005s) |
 | 1000 | Visos proceduros bendras laikas | 16ms (0.0016s) |
+| 1000 | Atminties naudota | 11MB |
 | ------ | ------ |  ------ | 
 | 10 000 | Nuskaitymas ir Rusiavimas | 41ms (0.041s)|
 | 10 000 | Isvedimas i faila | 9ms (0.009s)|
 | 10 000 | Visos proceduros bendras laikas | 52ms (0.0052s)|
+| 10 000 | Atminties naudota | 18MB |
 | ------ | ------ |  ------ | 
 | 100 000 | Nuskaitymas ir Rusiavimas | 419ms (0.419s)|
 | 100 000 | Isvedimas i faila | 86ms (0.086s)|
 | 100 000 | Visos proceduros bendras laikas | 506ms (0.506s)|
+| 100 000 | Atminties naudota | 64MB |
 | ------ | ------ |  ------ | 
 | 1000 000 | Nuskaitymas ir Rusiavimas | 3783ms (3.783s)|
 | 1000 000 | Isvedimas i faila | 714ms (0.714s)|
 | 1000 000 | Visos proceduros bendras laikas | 4498ms (4.498s)|
+| 1000 000 | Atminties naudota | 421MB |
 | ------ | ------ |  ------ | 
 | 1000 000 0 | Nuskaitymas ir Rusiavimas | 49001ms (49.001s)|
 | 1000 000 0 | Isvedimas i faila | 6712ms (6.712s)|
 | 1000 000 0 | Visos proceduros bendras laikas | 55714ms (55.714s)|
+| 1000 000 0 | Atminties naudota | 3720MB |
 
 ## X Studentu nuskaitymas, rusiavimas ir išvedimas/skaitymas į du failus [Queue]
 | Studentu skaicius | Uzduotis | Laiko trukme |
@@ -59,23 +68,112 @@
 | 1000 | Nuskaitymas ir Rusiavimas | 14ms (0.014s)|
 | 1000 | Isvedimas i faila | 4ms (0.004s) |
 | 1000 | Visos proceduros bendras laikas | 18ms (0.0018s) |
+| 1000 | Atminties naudota | 11MB |
 | ------ | ------ |  ------ | 
 | 10 000 | Nuskaitymas ir Rusiavimas | 39ms (0.039s)|
 | 10 000 | Isvedimas i faila | 20ms (0.0020s)|
 | 10 000 | Visos proceduros bendras laikas | 59ms (0.0059s)|
+| 10 000 | Atminties naudota | 17MB |
 | ------ | ------ |  ------ | 
 | 100 000 | Nuskaitymas ir Rusiavimas | 330ms (0.330s)|
 | 100 000 | Isvedimas i faila | 74ms (0.074s)|
 | 100 000 | Visos proceduros bendras laikas | 405ms (0.405s)|
+| 100 000 | Atminties naudota | 51MB |
 | ------ | ------ |  ------ | 
 | 1000 000 | Nuskaitymas ir Rusiavimas | 3386ms (3.386s)|
 | 1000 000 | Isvedimas i faila | 684ms (0.684s)|
 | 1000 000 | Visos proceduros bendras laikas | 4071ms (4.071s)|
+| 1000 000 | Atminties naudota | 348MB |
 | ------ | ------ |  ------ | 
 | 1000 000 0 | Nuskaitymas ir Rusiavimas | 34752ms (34.752s)|
 | 1000 000 0 | Isvedimas i faila | 6935ms (6.935s)|
 | 1000 000 0 | Visos proceduros bendras laikas | 41688ms (41.688s)|
+| 1000 000 0 | Atminties naudota | 3110MB |
 
+## Laiko analizė - 2 strategija + List optimizacija
+## X Studentu nuskaitymas, rusiavimas ir išvedimas/skaitymas į du failus [List]
+| Studentu skaicius | Uzduotis | Laiko trukme |
+| ------ | ------ |  ------ | 
+| 1000 | Nuskaitymas ir Rusiavimas | 12ms (0.0012s)|
+| 1000 | Isvedimas i faila | 4ms (0.004s) |
+| 1000 | Visos proceduros bendras laikas | 16ms (0.0016s) |
+| 1000 | Atminties naudota | 10MB |
+| ------ | ------ |  ------ | 
+| 10 000 | Nuskaitymas ir Rusiavimas | 48ms (0.048s)|
+| 10 000 | Isvedimas i faila | 8ms (0.008s)|
+| 10 000 | Visos proceduros bendras laikas | 56ms (0.0056s)|
+| 10 000 | Atminties naudota | 14MB |
+| ------ | ------ |  ------ | 
+| 100 000 | Nuskaitymas ir Rusiavimas | 385ms (0.385s)|
+| 100 000 | Isvedimas i faila | 69ms (0.069s)|
+| 100 000 | Visos proceduros bendras laikas | 454ms (0.454s)|
+| 100 000 | Atminties naudota | 48MB |
+| ------ | ------ |  ------ | 
+| 1000 000 | Nuskaitymas ir Rusiavimas | 3924ms (3.924s)|
+| 1000 000 | Isvedimas i faila | 656ms (0.656s)|
+| 1000 000 | Visos proceduros bendras laikas | 4583ms (4.583s)|
+| 1000 000 | Atminties naudota | 290MB |
+| ------ | ------ |  ------ | 
+| 1000 000 0 | Nuskaitymas ir Rusiavimas | 37322ms (37.322s)|
+| 1000 000 0 | Isvedimas i faila | 6151ms (6.151s)|
+| 1000 000 0 | Visos proceduros bendras laikas | 43473ms (43.473s)|
+| 1000 000 0 | Atminties naudota | 3320MB |
+
+## X Studentu nuskaitymas, rusiavimas ir išvedimas/skaitymas į du failus [LinkedList]
+| Studentu skaicius | Uzduotis | Laiko trukme |
+| ------ | ------ |  ------ | 
+| 1000 | Nuskaitymas ir Rusiavimas | 11ms (0.011s)|
+| 1000 | Isvedimas i faila | 6ms (0.005s) |
+| 1000 | Visos proceduros bendras laikas | 18ms (0.0018s) |
+| 1000 | Atminties naudota | 11MB |
+| ------ | ------ |  ------ | 
+| 10 000 | Nuskaitymas ir Rusiavimas | 45ms (0.045s)|
+| 10 000 | Isvedimas i faila | 9ms (0.009s)|
+| 10 000 | Visos proceduros bendras laikas | 52ms (0.0054s)|
+| 10 000 | Atminties naudota | 15MB |
+| ------ | ------ |  ------ | 
+| 100 000 | Nuskaitymas ir Rusiavimas | 431ms (0.431s)|
+| 100 000 | Isvedimas i faila | 83ms (0.083s)|
+| 100 000 | Visos proceduros bendras laikas | 506ms (0.514s)|
+| 100 000 | Atminties naudota | 55MB |
+| ------ | ------ |  ------ | 
+| 1000 000 | Nuskaitymas ir Rusiavimas | 3801ms (3.801s)|
+| 1000 000 | Isvedimas i faila | 712ms (0.712s)|
+| 1000 000 | Visos proceduros bendras laikas | 4498ms (4.513s)|
+| 1000 000 | Atminties naudota | 378MB |
+| ------ | ------ |  ------ | 
+| 1000 000 0 | Nuskaitymas ir Rusiavimas | 49421ms (49.421s)|
+| 1000 000 0 | Isvedimas i faila | 6756ms (6.756s)|
+| 1000 000 0 | Visos proceduros bendras laikas | 56177ms (56.177s)|
+| 1000 000 0 | Atminties naudota | 3150MB |
+
+## X Studentu nuskaitymas, rusiavimas ir išvedimas/skaitymas į du failus [Queue]
+| Studentu skaicius | Uzduotis | Laiko trukme |
+| ------ | ------ |  ------ | 
+| 1000 | Nuskaitymas ir Rusiavimas | 17ms (0.017s)|
+| 1000 | Isvedimas i faila | 3ms (0.003s) |
+| 1000 | Visos proceduros bendras laikas | 20ms (0.0020s) |
+| 1000 | Atminties naudota | 9MB |
+| ------ | ------ |  ------ | 
+| 10 000 | Nuskaitymas ir Rusiavimas | 44ms (0.044s)|
+| 10 000 | Isvedimas i faila | 18ms (0.0018s)|
+| 10 000 | Visos proceduros bendras laikas | 62ms (0.0062s)|
+| 10 000 | Atminties naudota | 15MB |
+| ------ | ------ |  ------ | 
+| 100 000 | Nuskaitymas ir Rusiavimas | 361ms (0.361s)|
+| 100 000 | Isvedimas i faila | 73ms (0.073s)|
+| 100 000 | Visos proceduros bendras laikas | 434ms (0.434s)|
+| 100 000 | Atminties naudota | 45MB |
+| ------ | ------ |  ------ | 
+| 1000 000 | Nuskaitymas ir Rusiavimas | 3513ms (3.513s)|
+| 1000 000 | Isvedimas i faila | 664ms (0.664s)|
+| 1000 000 | Visos proceduros bendras laikas | 4177ms (4.177s)|
+| 1000 000 | Atminties naudota | 312MB |
+| ------ | ------ |  ------ | 
+| 1000 000 0 | Nuskaitymas ir Rusiavimas | 36332ms (36.332s)|
+| 1000 000 0 | Isvedimas i faila | 6736ms (6.736s)|
+| 1000 000 0 | Visos proceduros bendras laikas | 43068ms (43.068s)|
+| 1000 000 0 | Atminties naudota | 2768MB |
 
 # Dokumentacija
 ## Objektai / Masyvai
@@ -141,17 +239,18 @@ public static void ShowMenu()
 
 #### GeneruotiXStudentuIFaila()
 ```csharp
- private static void GeneruotiXStudentuIFaila(int kiekis)
+ private static void GeneruotiXStudentuIFaila(int kiekis, int strategija)
 ```
 **Sugeneruoja x studentu ir isveda i faila**
 Parametrai:
 | įvestis | apibrėžimas |
 | ------ | ------ |
 | kiekis | norimas studentu kiekis |
+| strategija | naudojama strategija |
 
 #### RusiuotiXStudentu()
 ```csharp
- private static void RusiuotiXStudentu(int kiekis, String type)
+ private static void RusiuotiXStudentu(int kiekis, String type, int strategija)
 ```
 **Sugeneruoja ir surusiuoja x studentu  i du sarasus ir isveda i du failus**
 Parametrai:
@@ -159,11 +258,12 @@ Parametrai:
 | ------ | ------ |
 | kiekis | norimas studentu kiekis |
 | type | konteinerio tipas |
+| strategija | naudojama strategija |
 
 
 #### IsvestiIfaila()
 ```csharp
- private static void IsvestiIfaila(int kiekis, String type, String group)
+ private static void IsvestiIfaila(int kiekis, String type, String group, int strategija)
 ```
 **Sugeneruoja ir surusiuoja x studentu  i du sarasus ir isveda i du failus**
 Parametrai:
@@ -172,6 +272,7 @@ Parametrai:
 | kiekis | norimas studentu kiekis |
 | type | konteinerio tipas |
 | group | studentu rusiavimo grupe |
+| strategija | naudojama strategija |
 
 #### **`Klasė - StudentDataSimple`**
 
@@ -189,7 +290,7 @@ public static void ReadInputFromConsole()
 
 #### ReadInputFromFile()
 ```csharp
- public static void ReadInputFromFile(int kiekis, String tipas, Boolean sort, Boolean full)
+ public static void ReadInputFromFile(int kiekis, String tipas, Boolean sort, Boolean full, int strategija)
 ```
 Parametrai:
 | įvestis | apibrėžimas |
@@ -198,6 +299,7 @@ Parametrai:
 | tipas | konteinerio tipas |
 | sort | rusiuoti ar ne |
 | full | failo tipas (su ar be namu darbu) |
+| strategija | naudojama strategija |
 
 **Ivesti gauna is failo ir talpina į public Listą esantį klasėje "Program"**
 
