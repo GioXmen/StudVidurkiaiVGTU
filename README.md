@@ -2,28 +2,28 @@
 ## Integruotos programavimo aplinkos laboratorinis darbas v1.0
 
 ## Release aprašai trumpi
-# Release v0.1
+### Release v0.1
 Pridėtas Nuskaitymas iš konsolės studentų
 Galimybė sugeneruoti įvesti
 Pridėjimas į Array arba List tipą
 Spausdinimas su vidrukiais, mediana arba "raw"
-# Release v0.2
+### Release v0.2
 Mažas refactor
 Nuskaitymas iš failų palaikomas
 Ištraukiamas "Array" palaikymas
-# Release v0.3
+### Release v0.3
 Mažas refactor
 Pataisos v0.2 versijai keli
 Pridėtas exception handling nenumatytom situacijom
-# Release v0.4
+### Release v0.4
 Pridėtas laiko/spartos skaičiavimas studentų įvesčiai, rušiavimui ir išvedimui
 Pridėta spartos analizė programos veikimui
 Laiko matavimas sekundėmis pridėtas prie analizės
-# Release v0.5
+### Release v0.5
 Didelis refactor, kad palaikyti tris konteinerių tipus vienu metu - List, LinkedList ir Queue
 Spartos analizė visiems trims konteinerių tipams
 Analizės išvados
-# Release v1.0
+### Release v1.0
 Nauja rušiavimo strategiją (nr.2), kai nekuriami tris konteineriai vienu metu
 Pridėta Atminties naudojimo analizė visiem triem konteineriam, bei strategijoms
 Laiko analizė antrai strategijai
