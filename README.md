@@ -31,9 +31,9 @@
 - Išvados spartos ir atminties naudojimo abiejų strategijų
 
 ## Naudojimo  ir diegimo instrukcija
-### Kodą klonuoti iš github, su "SourceTree" arba pačiu VisualStudio
-### Paleidus programą, perskaityti išvesta meniu ir sekti ekrano instrukcijas
-### NB! - Kai kurioms funkcijoms pries jungiant reikia sugeneruoti studentų failus!
+-  Kodą klonuoti iš github, su "SourceTree" arba pačiu VisualStudio
+-  Paleidus programą, perskaityti išvesta meniu ir sekti ekrano instrukcijas
+-  NB! - Kai kurioms funkcijoms pries jungiant reikia sugeneruoti studentų failus!
 
 
 ## Analizes isvados
